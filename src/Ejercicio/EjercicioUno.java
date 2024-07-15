@@ -29,7 +29,21 @@ import java.util.List;
  */
 public class EjercicioUno {
 
-    // List<List<Integer>> subsets(List<Integer> set) {
-
-    // }
+    public List<List<Integer>> subsets (List<Integer> set) {
+        //crear el arreglo org. q
+        List<List<Integer>> arreglo = new ArrayList<>();
+        arreglo.add(new ArrayList<>()); //agrega el conjunto vacio (los que dividen los subconjuntos)  
+        for (Integer num : set){ //for que recorre los numeros para crear los subconjuntos
+            List<List<Integer>> subconjuntos = new ArrayList<>();
+            for(List<Integer> subconjunto : arreglo){ // recorre de nuevo los subconjuntos
+                List<Integer> nuevoSub = new ArrayList<>(subconjunto);
+                //agrega el numero y el nuevo subconjunto
+                nuevoSub.add(num);
+                subconjuntos.add(nuevoSub);
+            }
+            //se agregan todo los subconjuntos al arreglo org.
+            arreglo.addAll(subconjuntos);
+        }
+        return arreglo;
+    }
 }
